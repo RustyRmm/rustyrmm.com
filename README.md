@@ -7,7 +7,7 @@ One static page (`index.html`) plus screenshots and logos in `img/`. There is
 no build step: edit the HTML, push, and Pages publishes it within a minute.
 
 The **Latest agent** version on the page is read in the browser from the
-public [rustyrmm-releases](https://github.com/SmugZombie/rustyrmm-releases/releases)
+public [rustyrmm-releases](https://github.com/RustyRmm/rustyrmm-releases/releases)
 repository.
 
 ## Preview locally
