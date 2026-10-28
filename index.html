@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>RustyRMM: Remote Monitoring & Management for MSPs</title>
-<meta name="description" content="RustyRMM is a remote monitoring and management platform for MSPs and IT teams: one lightweight agent for Windows, macOS and Linux, a real remote terminal, scripts, patching, software deployment, security posture, remote desktop and alerts. Cloud-hosted or self-hosted.">
+<meta name="description" content="RustyRMM is a remote monitoring and management platform for MSPs and IT teams: one lightweight agent for Windows, macOS and Linux, a real remote terminal, scripts, patching, software deployment, security posture, remote desktop, alerts and branded reports. Cloud-hosted or self-hosted.">
 <meta property="og:title" content="RustyRMM: Remote Monitoring & Management">
 <meta property="og:description" content="One agent for Windows, macOS and Linux. Monitor, script, patch and support every device from your browser or phone.">
 <meta property="og:image" content="img/device.png">
@@ -105,6 +105,7 @@
   .card { padding: 24px; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--border); }
   .card h3 { font-size: 17px; margin: 14px 0 6px; }
   .card p { margin: 0; color: var(--muted); font-size: 15px; }
+  @media (min-width: 1100px) { .grid { grid-template-columns: repeat(4, 1fr); } }
   @media (max-width: 960px) { .grid { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 620px) { .grid { grid-template-columns: 1fr; } }
   .alt { background: var(--surface-2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
@@ -191,7 +192,7 @@
       <div>
         <span class="eyebrow">Remote monitoring &amp; management</span>
         <h1>Every device, <span>one console.</span></h1>
-        <p class="lead">RustyRMM gives MSPs and IT teams one lightweight agent for Windows, macOS and Linux. Monitor health and security, open a real terminal, run scripts and deploy software across the fleet, patch inside maintenance windows, and take over the screen, from your browser or your phone.</p>
+        <p class="lead">RustyRMM gives MSPs and IT teams one lightweight agent for Windows, macOS and Linux. Monitor health and security, open a real terminal, run scripts and deploy software across the fleet, patch inside maintenance windows, take over the screen, and send branded reports to your customers, from your browser or your phone.</p>
         <div class="cta">
           <a class="btn btn-primary" href="mailto:sales@rustyrmm.com?subject=Demo%20Access%20Request">Get a demo</a>
           <a class="btn btn-ghost" href="#features">See features</a>
@@ -244,6 +245,7 @@
         <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V3M7 10l5 5 5-5"/><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/></svg></div><h3>Software deployment</h3><p>Install, upgrade or remove apps across the fleet with winget, Homebrew, apt, dnf or pacman, as a one-off or on a schedule.</p></div>
         <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="3" rx="2"/><path d="M8 21h8M12 17v4M9 10l3-3 3 3M12 7v7"/></svg></div><h3>Remote desktop</h3><p>One-click RustDesk sessions through your own relay server, with fresh one-time passwords for every connection.</p></div>
         <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.27 21a2 2 0 0 0 3.46 0M3.26 15.33A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.67C19.41 13.96 18 12.5 18 8A6 6 0 0 0 6 8c0 4.5-1.41 5.96-2.74 7.33"/></svg></div><h3>Alerts that reach you</h3><p>Offline, CPU, memory, disk, temperature, failing drives, firewall or antivirus off, unencrypted disks, failed jobs and updates, sent by email or to Slack, Microsoft Teams, Discord or any webhook.</p></div>
+        <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7z"/><path d="M14 2v4a2 2 0 0 0 2 2h4M8 18v-2M12 18v-4M16 18v-6"/></svg></div><h3>Branded reports</h3><p>Device, update, software and alert reports for each customer or site, as PDF or CSV with your logo and colors. Run them on demand or email them on a schedule.</p></div>
         <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2M10 6h4M10 10h4M10 14h4M10 18h4"/></svg></div><h3>Built for MSPs</h3><p>Tenants and sites keep every customer separate. Enroll with a site code, or email users step-by-step setup instructions.</p></div>
         <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z"/><circle cx="16.5" cy="7.5" r=".5" fill="currentColor"/></svg></div><h3>Access control</h3><p>Sign in with Google, GitHub or Microsoft. Read-only, technician and admin roles per tenant, plus two-factor and an audit log of every action.</p></div>
         <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"/><path d="M12 22V12M3.29 7 12 12l8.71-5"/></svg></div><h3>Hardware &amp; software inventory</h3><p>Models, serials, disks and installed software for every device, with fleet-wide search.</p></div>
@@ -275,6 +277,15 @@
         <div class="frame"><img src="img/scripts.png" alt="Script library with Windows, macOS and Linux scripts" width="1280" height="760" loading="lazy"></div>
       </div>
       <div class="show">
+        <div>
+          <span class="eyebrow">Reports</span>
+          <h3>Reports your customers can read</h3>
+          <p>Turn fleet data into a clean PDF with your logo, colors and footer, or a CSV for your own spreadsheets.</p>
+          <ul><li>Devices, pending updates, installed software and alert summaries</li><li>For a whole customer or a single site</li><li>Emailed daily, weekly or monthly, and kept in the console</li></ul>
+        </div>
+        <div class="frame"><img src="img/report.png" alt="Branded device inventory report with summary figures and a device table" width="1280" height="400" loading="lazy"></div>
+      </div>
+      <div class="show flip">
         <div>
           <span class="eyebrow">Fleet view</span>
           <h3>See what needs attention</h3>
