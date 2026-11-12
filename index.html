@@ -167,6 +167,25 @@
   footer li { padding: 3px 0; }
   footer a { text-decoration: none; }
   footer a:hover { color: var(--fg); }
+  .fb { max-width: 680px; margin: 0 auto; display: grid; gap: 16px; }
+  .fb-kinds { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .fb-kinds label { display: flex; align-items: center; justify-content: center; gap: 8px; height: 46px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface); font-weight: 600; font-size: 15px; cursor: pointer; }
+  .fb-kinds input { position: absolute; opacity: 0; pointer-events: none; }
+  .fb-kinds label:has(input:checked) { border-color: var(--accent); background: var(--accent-soft); }
+  .fb-kinds label:has(input:focus-visible) { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .fb-field { display: grid; gap: 6px; font-size: 14px; font-weight: 600; }
+  .fb-field small { font-weight: 400; color: var(--subtle); }
+  .fb input[type=text], .fb input[type=email], .fb textarea { width: 100%; box-sizing: border-box; font: inherit; font-size: 16px; font-weight: 400; color: var(--fg); background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 11px 14px; }
+  .fb textarea { min-height: 150px; resize: vertical; line-height: 1.5; }
+  .fb input:focus, .fb textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+  .fb .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+  .fb-foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
+  .fb-foot .btn { cursor: pointer; font: inherit; font-weight: 600; }
+  .fb-foot .btn[disabled] { opacity: .6; cursor: default; transform: none; }
+  .fb-msg { margin: 0; padding: 12px 14px; border-radius: 10px; font-size: 15px; }
+  .fb-msg.ok { background: rgb(22 163 74 / .12); color: var(--fg); }
+  .fb-msg.err { background: var(--accent-soft); color: var(--fg); }
+  @media (max-width: 520px) { .fb-kinds { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -178,6 +197,7 @@
       <a href="#platforms">Platforms</a>
       <a href="#hosting">Hosting</a>
       <a href="#contact">Contact</a>
+      <a href="#feedback">Feedback</a>
     </nav>
     <div class="actions">
       <button class="icon-btn" id="theme" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">
@@ -403,6 +423,39 @@
       </div>
     </div>
   </section>
+  <section id="feedback">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Feedback</span>
+        <h2>Report a bug or request a feature</h2>
+        <p class="lead">Found something broken, or missing something you need? Tell us here and it goes straight to the team. Signed-in users can also send feedback from the console's user menu.</p>
+      </div>
+      <form class="fb" id="fb-form" novalidate hidden>
+        <div class="fb-kinds" role="radiogroup" aria-label="Kind of feedback">
+          <label><input type="radio" name="kind" value="bug" checked>Report a bug</label>
+          <label><input type="radio" name="kind" value="feature">Request a feature</label>
+        </div>
+        <label class="fb-field">Title
+          <input type="text" name="title" maxlength="120" required minlength="5" placeholder="e.g. Screen tab stays black on a Linux device">
+        </label>
+        <label class="fb-field">Details
+          <textarea name="description" maxlength="8000" required minlength="10" placeholder="What happened, what you expected, and the steps to make it happen again. For a feature: what you'd like and the problem it solves."></textarea>
+          <small>Don't include passwords, keys or customer data.</small>
+        </label>
+        <label class="fb-field">Email <small>(optional, so we can follow up)</small>
+          <input type="email" name="email" maxlength="254" autocomplete="email" placeholder="you@company.com">
+        </label>
+        <label class="hp" aria-hidden="true">Website <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+        <div id="fb-turnstile"></div>
+        <div class="fb-foot">
+          <small style="color: var(--subtle)">Protected by Cloudflare Turnstile.</small>
+          <button class="btn btn-primary" type="submit" id="fb-send">Send feedback</button>
+        </div>
+        <p class="fb-msg" id="fb-msg" role="status" hidden></p>
+      </form>
+      <p class="lead" id="fb-fallback" style="text-align: center">Email <a href="mailto:support@rustyrmm.com?subject=Feedback">support@rustyrmm.com</a> with bug reports and feature requests.</p>
+    </div>
+  </section>
 </main>
 
 <footer>
@@ -411,7 +464,7 @@
       <a class="brand" href="#top"><img src="img/mark.png" alt="">RustyRMM</a>
       <p style="margin: 10px 0 0; max-width: 300px">Remote monitoring and management for MSPs and IT teams.</p>
     </div>
-    <div><h4>Product</h4><ul><li><a href="#features">Features</a></li><li><a href="#platforms">Platforms</a></li><li><a href="#hosting">Hosting</a></li></ul></div>
+    <div><h4>Product</h4><ul><li><a href="#features">Features</a></li><li><a href="#platforms">Platforms</a></li><li><a href="#hosting">Hosting</a></li><li><a href="#feedback">Report a bug</a></li></ul></div>
     <div><h4>Contact</h4><ul><li><a href="mailto:sales@rustyrmm.com">sales@rustyrmm.com</a></li><li><a href="mailto:support@rustyrmm.com">support@rustyrmm.com</a></li></ul></div>
     <div><h4>Resources</h4><ul><li><a href="https://github.com/RustyRmm/rustyrmm-releases/releases">Agent releases</a></li><li><a href="https://github.com/rustyrmm">GitHub</a></li></ul></div>
   </div>
@@ -435,6 +488,76 @@
       if (when) v.insertAdjacentText('afterend', ' · ' + when);
     })
     .catch(function () { document.getElementById('version').querySelector('.pill').style.display = 'none'; });
+  // Bug reports & feature requests -> feedback.rustyrmm.com (a Cloudflare
+  // Worker that files them as issues). The form stays hidden, with an email
+  // fallback, until a Turnstile site key is set here.
+  (function () {
+    var TURNSTILE_SITE_KEY = '0x4AAAAAAF-sirDtNum5feIo';
+    var ENDPOINT = 'https://feedback.rustyrmm.com/v1/web';
+    if (!TURNSTILE_SITE_KEY) return;
+    var form = document.getElementById('fb-form');
+    var msg = document.getElementById('fb-msg');
+    var send = document.getElementById('fb-send');
+    var widget = null;
+    form.hidden = false;
+    document.getElementById('fb-fallback').hidden = true;
+
+    window.onTurnstileLoad = function () {
+      widget = turnstile.render('#fb-turnstile', {
+        sitekey: TURNSTILE_SITE_KEY,
+        theme: document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light',
+        appearance: 'interaction-only',
+      });
+    };
+    var ts = document.createElement('script');
+    ts.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=onTurnstileLoad';
+    ts.async = true; ts.defer = true;
+    document.head.appendChild(ts);
+
+    function show(text, ok) {
+      msg.textContent = text;
+      msg.className = 'fb-msg ' + (ok ? 'ok' : 'err');
+      msg.hidden = false;
+    }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var f = form.elements;
+      if (f.title.value.trim().length < 5) { show('Please give a short title (at least 5 characters).'); f.title.focus(); return; }
+      if (f.description.value.trim().length < 10) { show('Please describe it in a little more detail.'); f.description.focus(); return; }
+      if (f.email.value && !f.email.checkValidity()) { show('That email address doesn\u2019t look right.'); f.email.focus(); return; }
+      var token = widget !== null && window.turnstile ? turnstile.getResponse(widget) : '';
+      if (!token) { show('Please wait a moment for the verification to finish, then try again.'); return; }
+      send.disabled = true;
+      msg.hidden = true;
+      fetch(ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          kind: form.querySelector('input[name=kind]:checked').value,
+          title: f.title.value,
+          description: f.description.value,
+          email: f.email.value,
+          website: f.website.value,
+          turnstile_token: token,
+          browser: navigator.userAgent,
+        }),
+      })
+        .then(function (r) { return r.json().catch(function () { return {}; }).then(function (b) { return { ok: r.ok, b: b }; }); })
+        .then(function (res) {
+          if (!res.ok) throw new Error(res.b.error || 'Something went wrong.');
+          form.reset();
+          show(res.b.number ? 'Thanks! We\u2019ve got it (#' + res.b.number + ').' : 'Thanks! We\u2019ve got it.', true);
+        })
+        .catch(function (err) {
+          show((err && err.message) || 'Could not send. Please email support@rustyrmm.com instead.');
+        })
+        .finally(function () {
+          send.disabled = false;
+          if (widget !== null && window.turnstile) turnstile.reset(widget);
+        });
+    });
+  })();
 </script>
 </body>
 </html>
