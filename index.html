@@ -84,6 +84,8 @@
   .hero .cta { display: flex; flex-wrap: wrap; gap: 12px; }
   .hero-note { margin-top: 22px; font-size: 14px; color: var(--subtle); display: flex; flex-wrap: wrap; gap: 6px 18px; }
   .hero-note span::before { content: '✓ '; color: var(--ok); font-weight: 700; }
+  .tour { max-width: 960px; margin: 0 auto; }
+  .tour video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; background: #0b0b0d; }
   .hero-visual { position: relative; padding-bottom: 40px; }
   .frame { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; background: var(--surface); box-shadow: var(--shadow); }
   .frame .bar { height: 28px; display: flex; gap: 6px; align-items: center; padding: 0 12px; border-bottom: 1px solid var(--border); background: var(--surface-2); }
@@ -202,6 +204,22 @@
       <div class="hero-visual">
         <div class="frame"><div class="bar"><i></i><i></i><i></i></div><img src="img/device.png" alt="RustyRMM device overview with live CPU, memory, uptime and storage" width="1280" height="760"></div>
         <img class="phone" src="img/phone.png" alt="RustyRMM on a phone: device quick actions" width="390" height="780" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <section id="tour" style="padding-top: 40px">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Watch the tour</span>
+        <h2>One Rust agent, every tool you need</h2>
+        <p>Remote desktop, a real terminal, fleet patching, alerts and branded reports, shown in the RustyRMM console in 25 seconds.</p>
+      </div>
+      <div class="frame tour">
+        <video controls playsinline preload="none" poster="img/rustyrmm-tour.jpg" width="1920" height="1080">
+          <source src="img/rustyrmm-tour.mp4" type="video/mp4">
+          <a href="img/rustyrmm-tour.mp4">Watch the RustyRMM tour (MP4, 25 seconds)</a>
+        </video>
       </div>
     </div>
   </section>
