@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>RustyRMM: Remote Monitoring & Management for MSPs</title>
-<meta name="description" content="RustyRMM is a remote monitoring and management platform for MSPs and IT teams: one lightweight agent for Windows, macOS and Linux, a real remote terminal, scripts, patching, software deployment, security posture, built-in browser remote desktop, alerts and branded reports, with secure mode for risky actions. Cloud-hosted or self-hosted.">
+<meta name="description" content="RustyRMM is a remote monitoring and management platform for MSPs and IT teams: one lightweight agent for Windows, macOS and Linux, a real remote terminal, scripts, patching, software deployment, security posture, built-in browser remote desktop, alerts and branded reports, with secure mode for risky actions. Cloud hosted with a free trial, self-hosted, or fully managed.">
 <meta property="og:title" content="RustyRMM: Remote Monitoring & Management">
 <meta property="og:description" content="One agent for Windows, macOS and Linux. Monitor, script, patch and support every device from your browser or phone.">
 <meta property="og:image" content="img/device.png">
@@ -137,8 +137,8 @@
   .pill code { font-weight: 700; color: var(--fg); }
 
   /* Hosting */
-  .plans { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
-  .plan { padding: 30px; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--border); display: flex; flex-direction: column; }
+  .plans { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+  .plan { padding: 28px; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--border); display: flex; flex-direction: column; }
   .plan.featured { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent), var(--shadow); }
   .plan h3 { font-size: 22px; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
   .tag { font-size: 12px; font-weight: 700; padding: 4px 10px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); white-space: nowrap; }
@@ -149,7 +149,7 @@
   .plan li::before { content: '✓'; position: absolute; left: 2px; color: var(--ok); font-weight: 700; }
   .plan .meta { font-size: 14px; color: var(--subtle); margin-top: auto; padding-top: 14px; border-top: 1px solid var(--border); }
   .plan .btn { align-self: flex-start; margin-top: 18px; }
-  @media (max-width: 820px) { .plans { grid-template-columns: 1fr; } }
+  @media (max-width: 980px) { .plans { grid-template-columns: 1fr; max-width: 620px; margin: 0 auto; } }
 
   /* CTA + contact */
   .cta-band { border-radius: 20px; padding: 48px; background: linear-gradient(135deg, #b1461b, #d9601f); color: #fff; display: grid; grid-template-columns: 1.4fr 1fr; gap: 24px; align-items: center; }
@@ -219,7 +219,7 @@
           <a class="btn btn-primary" href="mailto:sales@rustyrmm.com?subject=Demo%20Access%20Request">Get a demo</a>
           <a class="btn btn-ghost" href="#features">See features</a>
         </div>
-        <div class="hero-note"><span>Cloud or self-hosted</span><span>Multi-tenant for MSPs</span><span>Signed automatic updates</span></div>
+        <div class="hero-note"><span>Cloud, managed or self-hosted</span><span>Multi-tenant for MSPs</span><span>Signed automatic updates</span></div>
       </div>
       <div class="hero-visual">
         <div class="frame"><div class="bar"><i></i><i></i><i></i></div><img src="img/device.png" alt="RustyRMM device overview with live CPU, memory, uptime and storage" width="1280" height="760"></div>
@@ -362,25 +362,24 @@
       <div class="section-head">
         <span class="eyebrow">Hosting</span>
         <h2>Deploy it your way</h2>
-        <p class="lead">Start in the cloud today, or keep everything on your own infrastructure.</p>
+        <p class="lead">Try it in the cloud today, keep everything on your own infrastructure, or let us run it for you.</p>
       </div>
       <div class="plans">
         <div class="plan featured">
-          <h3>Cloud hosting <span class="tag">Available now</span></h3>
-          <p>We run RustyRMM for you: updates, backups and monitoring included.</p>
+          <h3>Cloud Hosted <span class="tag">Free trial</span></h3>
+          <p>Your own RustyRMM in our cloud. Sign up and enroll your first device in minutes.</p>
           <ul>
-            <li>No infrastructure to manage</li>
-            <li>Automatic updates and maintenance</li>
-            <li>High availability and redundancy</li>
+            <li>Free trial, no credit card needed</li>
+            <li>Upgrade from your account when you're ready</li>
+            <li>No servers to set up or maintain</li>
+            <li>Updates and backups included</li>
             <li>Scales to any number of devices</li>
-            <li>24/7 monitoring and support</li>
-            <li>Fast deployment and setup</li>
           </ul>
-          <div class="meta">On a subdomain of rustyrmm.com or your own domain.</div>
-          <a class="btn btn-primary" href="mailto:sales@rustyrmm.com?subject=Cloud%20Hosting">Talk to sales</a>
+          <div class="meta">On a subdomain of rustyrmm.com.</div>
+          <a class="btn btn-primary" href="https://signup.rustyrmm.com">Start free trial</a>
         </div>
         <div class="plan">
-          <h3>Self-hosted <span class="tag soon">Early access</span></h3>
+          <h3>Self-Hosted <span class="tag soon">Early access</span></h3>
           <p>Run the whole platform on your own server, for full control of your data.</p>
           <ul>
             <li>One Docker Compose stack on a single Linux host</li>
@@ -388,10 +387,22 @@
             <li>Remote desktop built in, with an optional RustDesk relay</li>
             <li>Agents update themselves from signed releases</li>
             <li>Meets data-residency and compliance requirements</li>
-            <li>No recurring hosting fees</li>
           </ul>
           <div class="meta">Deployment guides included. Contact us for early access.</div>
           <a class="btn btn-ghost" href="mailto:sales@rustyrmm.com?subject=Self-Hosted%20Early%20Access">Request early access</a>
+        </div>
+        <div class="plan">
+          <h3>Cloud Managed <span class="tag soon">Managed service</span></h3>
+          <p>We host RustyRMM and run it for you, from rollout to day-to-day upkeep.</p>
+          <ul>
+            <li>Everything in Cloud Hosted</li>
+            <li>Onboarding and agent rollout done with you</li>
+            <li>Alerts, patch policies and maintenance windows set up for you</li>
+            <li>Your own domain</li>
+            <li>A named contact for your account</li>
+          </ul>
+          <div class="meta">Priced to your fleet. Tell us what you manage.</div>
+          <a class="btn btn-ghost" href="mailto:sales@rustyrmm.com?subject=Cloud%20Managed">Contact sales</a>
         </div>
       </div>
     </div>
