@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Terms of Use · RustyRMM</title>
+<meta name="description" content="The terms that govern use of the RustyRMM website, hosted platform, agents, APIs and related services.">
+<link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<meta name="theme-color" content="#b1461b">
+<script>
+  // Theme before first paint: saved choice, else the system setting.
+  (function () {
+    try {
+      var t = localStorage.getItem('rmm-site-theme');
+      var dark = t ? t === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+    } catch (e) {}
+  })();
+</script>
+<style>
+  :root {
+    --bg: #fbfaf9; --surface: #ffffff; --surface-2: #f4f1ee; --border: #e7e2dd;
+    --fg: #1c1714; --muted: #5f5650; --subtle: #8d847d;
+    --accent: #c4501d; --accent-strong: #a8431a; --accent-soft: #fbeee7; --on-accent: #ffffff;
+    --max: 1160px;
+    color-scheme: light;
+  }
+  [data-theme='dark'] {
+    --bg: #0d0b0a; --surface: #161311; --surface-2: #1e1a17; --border: #2c2622;
+    --fg: #f1ece8; --muted: #b3aaa3; --subtle: #847a73;
+    --accent: #f07a3c; --accent-strong: #ff8d52; --accent-soft: rgb(240 122 60 / .12); --on-accent: #1a0d06;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-padding-top: 84px; }
+  @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+  body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.65 -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: var(--accent); }
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 20px; }
+
+  .nav { position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--bg) 85%, transparent); backdrop-filter: saturate(1.4) blur(10px); border-bottom: 1px solid var(--border); }
+  .nav .wrap { display: flex; align-items: center; height: 64px; gap: 16px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 18px; text-decoration: none; color: var(--fg); }
+  .brand img { width: 30px; height: 30px; border-radius: 8px; }
+  .actions { display: flex; gap: 10px; align-items: center; margin-left: auto; }
+  .back { color: var(--muted); text-decoration: none; font-size: 15px; }
+  .back:hover { color: var(--fg); }
+  .icon-btn { width: 38px; height: 38px; border-radius: 10px; border: 1px solid var(--border); background: var(--surface); color: var(--muted); cursor: pointer; display: inline-flex; align-items: center; justify-content: center; }
+  .icon-btn svg { width: 18px; height: 18px; }
+
+  .head { padding: 56px 0 32px; border-bottom: 1px solid var(--border); }
+  .eyebrow { display: inline-block; font-size: 13px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); }
+  h1 { font-size: clamp(32px, 5vw, 46px); line-height: 1.1; letter-spacing: -0.02em; margin: 10px 0 20px; }
+  .meta { display: flex; flex-wrap: wrap; gap: 10px 32px; margin: 0; }
+  .meta div { display: flex; gap: 8px; }
+  .meta dt { color: var(--subtle); }
+  .meta dd { margin: 0; color: var(--muted); }
+
+  .layout { display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 56px; padding: 40px 0 88px; }
+  .toc { position: sticky; top: 88px; align-self: start; max-height: calc(100vh - 110px); overflow-y: auto; }
+  .toc h2 { font-size: 13px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--subtle); margin: 0 0 10px; }
+  .toc ol { list-style: none; margin: 0; padding: 0; border-left: 1px solid var(--border); }
+  .toc a { display: block; padding: 4px 0 4px 14px; margin-left: -1px; border-left: 2px solid transparent; color: var(--muted); text-decoration: none; font-size: 14px; line-height: 1.4; }
+  .toc a:hover { color: var(--fg); border-left-color: var(--accent); }
+
+  .doc { max-width: 72ch; }
+  .doc h2 { font-size: 21px; line-height: 1.3; letter-spacing: -0.01em; margin: 44px 0 12px; }
+  .doc h2:first-child { margin-top: 0; }
+  .doc h2 .num { color: var(--accent); font-variant-numeric: tabular-nums; }
+  .doc p { margin: 0 0 14px; }
+  .doc ul { margin: 0 0 14px; padding-left: 22px; }
+  .doc li { margin: 6px 0; }
+  .doc li::marker { color: var(--accent); }
+
+  footer { border-top: 1px solid var(--border); padding: 28px 0 40px; color: var(--subtle); font-size: 14px; }
+  footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; }
+  footer a { color: var(--muted); }
+
+  @media (max-width: 860px) {
+    .layout { grid-template-columns: 1fr; gap: 28px; }
+    .toc { position: static; max-height: none; }
+    .head { padding-top: 36px; }
+  }
+  a:focus-visible, .icon-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+</style>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="/"><img src="img/mark.png" alt="">RustyRMM</a>
+    <div class="actions">
+      <a class="back" href="/">← Back to rustyrmm.com</a>
+      <button class="icon-btn" id="theme" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="head">
+    <span class="eyebrow">Legal</span>
+    <h1>RustyRMM Terms of Use</h1>
+    <dl class="meta"><div><dt>Effective date</dt><dd>11/14/2026</dd></div><div><dt>Provider</dt><dd>RustyRMM</dd></div><div><dt>Legal notices</dt><dd><a href="mailto:legal@rustyrmm.com">legal@rustyrmm.com</a></dd></div></dl>
+  </div>
+  <div class="layout">
+    <nav class="toc" aria-label="Sections">
+      <h2>Contents</h2>
+      <ol><li><a href="#section-1">1. Acceptance and authority</a></li><li><a href="#section-2">2. Service scope and agreement priority</a></li><li><a href="#section-3">3. Accounts and access security</a></li><li><a href="#section-4">4. Device authorization and MSP responsibilities</a></li><li><a href="#section-5">5. Remote actions and automation</a></li><li><a href="#section-6">6. Acceptable use</a></li><li><a href="#section-7">7. Trials and evaluation features</a></li><li><a href="#section-8">8. Fees renewal and cancellation</a></li><li><a href="#section-9">9. Customer Data and privacy</a></li><li><a href="#section-10">10. Security backups and service availability</a></li><li><a href="#section-11">11. Third-party services and updates</a></li><li><a href="#section-12">12. Intellectual property and confidentiality</a></li><li><a href="#section-13">13. Suspension and termination</a></li><li><a href="#section-14">14. End of service and data handling</a></li><li><a href="#section-15">15. Warranties and disclaimers</a></li><li><a href="#section-16">16. Limitation of liability</a></li><li><a href="#section-17">17. Customer indemnification</a></li><li><a href="#section-18">18. Governing law and disputes</a></li><li><a href="#section-19">19. Changes notices and general terms</a></li></ol>
+    </nav>
+    <article class="doc">
+<p>These Terms of Use govern access to the RustyRMM website, hosted remote monitoring and management platform, agents, APIs, integrations, and related services we provide (collectively, the “Services”). “RustyRMM,” “we,” “us,” and “our” mean the Provider identified above. “Customer,” “you,” and “your” mean the person or organization accepting these Terms.</p>
+<h2 id="section-1"><span class="num">1.</span> Acceptance and authority</h2>
+<p>By checking the acceptance box and completing account registration, or accepting an order that incorporates these Terms, you agree to these Terms. If you accept for an organization, you represent that you have authority to bind that organization. If you lack that authority or disagree with these Terms, do not register or use the Services. Individual users must be at least 18 years old and legally able to enter a contract.</p>
+<p>These Terms cover business and professional use. Any rights that applicable law does not permit us to exclude remain unaffected.</p>
+<h2 id="section-2"><span class="num">2.</span> Service scope and agreement priority</h2>
+<p>RustyRMM provides tools for managing authorized devices, which may include monitoring, inventory, remote desktop and terminal access, scripts, software deployment, patching, alerts, reports, and integrations. Features and limits depend on your plan and deployment.</p>
+<p>A mutually accepted order or checkout confirmation (“Order”) identifies your purchased plan, subscription term, fees, and any additional commitments. A signed agreement prevails over these Terms where they conflict. A data processing agreement (“DPA”) prevails for its subject matter, and an Order prevails for its commercial terms. Your purchase order does not add or modify legal terms unless we expressly agree in writing.</p>
+<p>Managed services apply only when expressly purchased and described in an Order or statement of work. Platform access alone does not engage us to monitor alerts, operate your fleet, respond to incidents, or provide a managed security service. Self-hosted deployments may require separate license terms; any such agreed terms control the licensed software. Third-party and open-source components remain subject to their applicable licenses.</p>
+<h2 id="section-3"><span class="num">3.</span> Accounts and access security</h2>
+<p>You must provide accurate account and billing details and keep them current. You are responsible for your authorized users, roles, credentials, enrollment codes, API keys, integration tokens, and account configuration. Use individual accounts, least-privilege permissions, and available multifactor authentication, and promptly remove access when it is no longer authorized.</p>
+<p>You must promptly notify <a href="mailto:support@rustyrmm.com">support@rustyrmm.com</a> of suspected account compromise, exposed credentials, or unauthorized use. We may require verification before restoring access or changing account ownership. You are responsible for activity you authorize and for unauthorized activity resulting from your failure to meet these obligations, except to the extent caused by our breach of these Terms or applicable law.</p>
+<h2 id="section-4"><span class="num">4.</span> Device authorization and MSP responsibilities</h2>
+<p>You may enroll, access, monitor, or control only devices and systems you own or are expressly authorized to manage. Before deployment or access, you must obtain and maintain all permissions, contracts, notices, and legally required consents from device owners, customers, employers, and affected users. These obligations include remote access, unattended access, monitoring, collection of device and user information, and any recording features you enable.</p>
+<p>If you are an MSP or manage systems for others, you remain responsible for your client agreements, lawful instructions, tenant assignments, access permissions, and compliance with your clients’ requirements. You must not imply that we contract directly with your clients or accept your obligations to them. Your clients’ data is Customer Data under these Terms, and you must have authority to instruct us to process it.</p>
+<p>You must stop access and remove or disable agents and integrations when your authority ends. An enrollment code, working credential, or technical ability to connect does not itself establish authorization.</p>
+<h2 id="section-5"><span class="num">5.</span> Remote actions and automation</h2>
+<p>The Services can execute privileged commands, install or remove software, change configuration, stop processes, restart devices, and affect many devices at once. These actions may interrupt operations, expose information, or cause data loss if improperly configured or used.</p>
+<p>You control and are responsible for the instructions, scripts, schedules, policies, target selections, and approvals you submit or enable. Review and test changes, verify the intended scope, maintain appropriate backups, and use suitable maintenance windows. Sample scripts and suggested configurations require your assessment before use. Scheduled or queued actions may execute when devices reconnect; review or cancel pending actions when circumstances change.</p>
+<p>You may connect AI assistants or other tools through MCP, APIs, or integrations. You authorize actions within the permissions you grant, including automated actions you enable. You must evaluate outputs, restrict privileges, protect tokens, and obtain required permissions before sharing data with another provider. AI output may be inaccurate or unsafe. The integration’s availability does not mean we verify every generated instruction or guarantee its result.</p>
+<h2 id="section-6"><span class="num">6.</span> Acceptable use</h2>
+<p>You must not use the Services to:</p>
+<ul><li>Access systems without authorization; conduct covert or unlawful surveillance; stalk; defraud; or facilitate scams or credential theft.</li><li>Deploy malware, ransomware, destructive scripts, cryptominers without authorization, denial-of-service tools, fork bombs, or resource-exhaustion workloads.</li><li>Disrupt the Services, other tenants, hosting infrastructure, networks, or third-party systems; bypass rate limits, quotas, security controls, or tenant isolation.</li><li>Exploit vulnerabilities, scan or penetration-test our infrastructure without prior written authorization, or access another customer’s information.</li><li>Violate privacy, employment, intellectual property, export-control, sanctions, or other applicable laws or third-party rights.</li><li>Share or resell access except as permitted for your authorized users and MSP clients under your plan, or misrepresent your identity or authority.</li><li>Reverse engineer proprietary portions of the Services except where applicable law or an applicable software license permits it.</li></ul>
+<p>Report suspected vulnerabilities privately to <a href="mailto:support@rustyrmm.com">support@rustyrmm.com</a>. This provision does not authorize security testing. We may investigate suspected abuse and impose proportionate technical limits or restrictions to protect the Services.</p>
+<h2 id="section-7"><span class="num">7.</span> Trials and evaluation features</h2>
+<p>Trials are subject to the duration, device limits, and restrictions disclosed when you register. A no-credit-card trial does not become a paid subscription unless you affirmatively purchase one. At trial expiration, access may end unless you upgrade. Export needed information before expiration; trial data is subject to Section 14.</p>
+<p>Beta, preview, and early-access features may change or be discontinued and are provided for evaluation without service-level commitments, to the extent permitted by law. Do not rely on them for critical operations without appropriate safeguards.</p>
+<h2 id="section-8"><span class="num">8.</span> Fees renewal and cancellation</h2>
+<p>Paid subscriptions require a separate affirmative purchase. Before purchase, we will disclose the price, billing interval, subscription term, usage calculation, renewal terms, and applicable cancellation method. You authorize charges only as disclosed and accepted at purchase. Device counts, overages, and prorations apply only as specified in your Order.</p>
+<p>If your Order provides for automatic renewal, your subscription renews for the disclosed period at the disclosed rate unless canceled before renewal. You may cancel through the account’s cancellation function or by contacting <a href="mailto:support@rustyrmm.com">support@rustyrmm.com</a>. Cancellation takes effect at the end of the current paid term unless your Order or applicable law provides otherwise; deleting an agent alone does not cancel your subscription.</p>
+<p>Except as required by law or expressly stated in your Order or these Terms, fees are nonrefundable and unused periods receive no credit. You are responsible for applicable transaction taxes, excluding taxes on our net income. We will give at least 30 days’ advance notice of increased renewal pricing, which will apply no earlier than the next renewal and will allow you to cancel before the increase.</p>
+<p>For overdue undisputed amounts, we may suspend paid access after notice and a reasonable opportunity to resolve the payment issue. Good-faith billing disputes should be reported promptly with supporting details; this does not shorten any rights provided by law.</p>
+<h2 id="section-9"><span class="num">9.</span> Customer Data and privacy</h2>
+<p>“Customer Data” means information submitted to or collected through the Services on your behalf, including device inventories, telemetry, logs, script content and output, configuration, reports, and remote-session information to the extent processed by the Services. You retain your rights in Customer Data.</p>
+<p>You grant us a limited right to process Customer Data as necessary to provide, secure, support, and maintain the Services, follow your lawful instructions, and comply with law. This includes using service providers under appropriate contractual obligations. This permission does not transfer ownership or authorize unrelated advertising use of Customer Data.</p>
+<p>Our Privacy Notice at <a href="https://rustyrmm.com/privacy">https://rustyrmm.com/privacy</a> describes our handling of personal information, including account, website, and service-related information. Where we process personal data on your behalf, the applicable DPA governs that processing. You are responsible for establishing a lawful basis, providing required notices, and obtaining necessary consents for information you direct us to process.</p>
+<p>Do not provide regulated data requiring special contractual or technical safeguards unless we have expressly agreed to support that use and completed any required agreements. For example, do not submit protected health information requiring a business associate agreement before such an agreement is signed. Use of RustyRMM alone does not establish regulatory compliance.</p>
+<h2 id="section-10"><span class="num">10.</span> Security backups and service availability</h2>
+<p>We will maintain reasonable administrative, technical, and organizational safeguards appropriate to the hosted Services and notify you of security incidents affecting Customer Data as required by applicable law and any DPA. No system is immune from compromise or interruption.</p>
+<p>Hosted-service backups included in your plan support service recovery; they are not a backup service for your managed endpoints. Maintain independent endpoint backups and copies of essential configuration, scripts, and records. Backup scope, retention, and recovery commitments are those expressly stated in your Order or applicable service documentation. We do not promise a recovery time or recovery point unless agreed in writing.</p>
+<p>The Services may be interrupted by maintenance, updates, network conditions, third-party failures, security measures, or events beyond reasonable control. No uptime percentage, response time, recovery objective, or service credit applies unless expressly agreed in a service-level agreement. Monitoring, alerts, patching, and security-posture information do not guarantee detection, delivery, successful remediation, or prevention of security incidents.</p>
+<p>For self-hosted deployments, you are responsible for infrastructure, network access, certificates, configuration, updates, backups, and recovery except for duties we expressly accept in writing.</p>
+<h2 id="section-11"><span class="num">11.</span> Third-party services and updates</h2>
+<p>Third-party identity providers, package repositories, messaging services, remote-access components, AI providers, and other integrations have their own terms and privacy practices. You are responsible for their accounts, licenses, permissions, and charges. We are not responsible for their independent acts or failures, but remain responsible for our contractual obligations concerning our subprocessors.</p>
+<p>You authorize updates to hosted components and agents in accordance with your selected channels and applicable settings. Updates can change functionality or compatibility. We may make urgent changes to address security, abuse, or legal requirements. We will provide reasonable notice of material changes where practicable and will not materially reduce the core functionality of a paid subscription during its current term without providing a reasonable remedy, such as replacement functionality or termination with a prorated refund for the affected unused prepaid period.</p>
+<h2 id="section-12"><span class="num">12.</span> Intellectual property and confidentiality</h2>
+<p>We and our licensors retain all rights in the Services, software, documentation, and branding other than Customer Data. During your authorized term, we grant you a limited, nonexclusive right to use the Services and install provided agents on authorized devices for your internal operations and, where your plan permits, service delivery to your clients. No ownership transfers. Applicable open-source license rights are unaffected.</p>
+<p>You may voluntarily provide feedback. You grant us a perpetual, worldwide, royalty-free right to use that feedback to improve our offerings without payment, excluding your confidential information and Customer Data.</p>
+<p>Each party must protect the other’s nonpublic information marked confidential or reasonably understood to be confidential, use it only to perform or exercise rights under this agreement, and disclose it only to people who need it and are bound to protect it. This obligation does not cover information lawfully known without restriction, independently developed, publicly available without breach, or lawfully received from another source. Legally compelled disclosure is permitted, with advance notice where lawful and reasonable assistance to seek protection.</p>
+<h2 id="section-13"><span class="num">13.</span> Suspension and termination</h2>
+<p>We may promptly restrict or suspend access when reasonably necessary to address suspected unauthorized access, material security risk, unlawful activity, serious misuse, or a legal obligation. Restrictions will be proportionate where feasible. We will notify you of the reason and steps to restore access unless doing so would create a security risk or violate law, and restore access when the basis is resolved.</p>
+<p>Either party may terminate for a material breach that remains uncured 30 days after written notice. We may terminate immediately for a breach that cannot reasonably be cured or for repeated serious abuse. You may cancel renewal as described in Section 8.</p>
+<p>We may discontinue a hosted service for business reasons on at least 60 days’ notice and refund unused prepaid fees for the discontinued period. If you terminate because of our uncured material breach, we will refund unused prepaid fees for the terminated period. No refund is due for termination caused by your material breach, except as required by law.</p>
+<h2 id="section-14"><span class="num">14.</span> End of service and data handling</h2>
+<p>When your access ends, your right to use the terminated Services ends. Stop using affected credentials and integrations and uninstall or reconfigure agents on devices you manage. Account closure does not guarantee that an offline agent has been removed or that pending endpoint activity has stopped; you must verify those conditions.</p>
+<p>Subject to law, security restrictions, and resolution of account ownership, we will make Customer Data available through supported export methods for 30 days after expiration or termination. Contact <a href="mailto:support@rustyrmm.com">support@rustyrmm.com</a> promptly if you need export assistance. We may limit interactive device access while preserving an appropriate export route. After that period, we may delete Customer Data from active systems. Residual backups will expire through our documented retention cycle, subject to legal preservation requirements. Any applicable DPA controls conflicting deletion obligations.</p>
+<p>Terms that by their nature should survive will survive, including accrued payment obligations, confidentiality, ownership, liability limits, indemnification, and dispute provisions.</p>
+<h2 id="section-15"><span class="num">15.</span> Warranties and disclaimers</h2>
+<p>Each party represents that it has authority to enter into this agreement. We will provide paid Services with reasonable care and skill. Notify us promptly of a material failure; we will use reasonable efforts to correct it. If we cannot correct a material failure within a reasonable period, you may terminate the affected Services and receive a prorated refund of unused prepaid fees. This remedy does not exclude rights that applicable law makes nonwaivable.</p>
+<p>EXCEPT FOR EXPRESS COMMITMENTS IN THIS AGREEMENT AND TO THE MAXIMUM EXTENT PERMITTED BY LAW, THE SERVICES ARE PROVIDED “AS IS” AND “AS AVAILABLE.” WE DISCLAIM IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NONINFRINGEMENT. WE DO NOT WARRANT THAT THE SERVICES WILL BE UNINTERRUPTED, ERROR-FREE, OR CAPABLE OF PREVENTING EVERY SECURITY INCIDENT, OR THAT EVERY PATCH, SCRIPT, ALERT, OR THIRD-PARTY INTEGRATION WILL SUCCEED.</p>
+<p>The Services are not designed for use where failure could reasonably cause death, serious physical injury, or severe environmental harm. You must not rely on them as the sole control for such uses.</p>
+<h2 id="section-16"><span class="num">16.</span> Limitation of liability</h2>
+<p>TO THE MAXIMUM EXTENT PERMITTED BY LAW, NEITHER PARTY IS LIABLE UNDER THIS AGREEMENT FOR INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, EXEMPLARY, OR PUNITIVE DAMAGES, OR LOST PROFITS, REVENUE, OR BUSINESS OPPORTUNITIES, EVEN IF ADVISED OF THEIR POSSIBILITY.</p>
+<p>EACH PARTY’S TOTAL AGGREGATE LIABILITY ARISING OUT OF OR RELATING TO THIS AGREEMENT WILL NOT EXCEED THE GREATER OF THE FEES YOU PAID OR PAYABLE FOR THE AFFECTED SERVICES DURING THE 12 MONTHS BEFORE THE FIRST EVENT GIVING RISE TO LIABILITY OR US $100.</p>
+<p>These exclusions and cap do not apply to fraud, willful misconduct, your unpaid fees, infringement or misappropriation of the other party’s intellectual property, your obligations under Section 17, or liability that cannot lawfully be limited. These limits apply across all claims and legal theories and do not limit remedies that applicable law makes nonwaivable.</p>
+<h2 id="section-17"><span class="num">17.</span> Customer indemnification</h2>
+<p>You will defend us and our personnel against third-party claims arising from your unauthorized device access or surveillance, your unlawful use of the Services, or Customer Data or scripts you provide that infringe third-party rights, and pay resulting damages and settlements approved by you. This obligation applies only to the extent the claim results from your conduct and does not apply to the extent caused by our breach, negligence, or misconduct.</p>
+<p>We must promptly notify you of a claim, provide reasonable cooperation at your expense, and allow you to control the defense using competent counsel. You may not settle in a way that admits fault by us, imposes nonmonetary obligations on us, or fails to release us without our written consent, which will not be unreasonably withheld. We may participate with our own counsel at our expense.</p>
+<h2 id="section-18"><span class="num">18.</span> Governing law and disputes</h2>
+<p>These Terms are governed by the laws of Arizona, USA, excluding conflict-of-law rules. Subject to mandatory applicable law, courts located in Maricopa County, Arizona, USA have exclusive jurisdiction, and each party consents to that jurisdiction.</p>
+<p>Before bringing a claim, a party will notify the other in writing and attempt in good faith to resolve the dispute for 30 days. This does not prevent urgent injunctive relief or a filing needed to preserve a limitation period. These Terms do not require arbitration or waive a right to participate in a class action.</p>
+<h2 id="section-19"><span class="num">19.</span> Changes notices and general terms</h2>
+<p>We may revise these Terms. Material changes will be notified by email or a prominent account notice at least 30 days before taking effect, except changes reasonably needed sooner for legal or urgent security reasons. Material changes to an existing paid subscription take effect at renewal unless you expressly accept them earlier or applicable law requires earlier effect. Changes do not retroactively alter accrued claims. If you disagree, cancel renewal or stop using free Services before the effective date. Where law requires renewed affirmative consent, we will obtain it.</p>
+<p>We send contractual notices to your account email or through the Services; you must keep your email current. Send legal notices to <a href="mailto:legal@rustyrmm.com">legal@rustyrmm.com</a>. Electronic acceptance and notices may be used to the extent permitted by law; you may download and retain these Terms.</p>
+<p>Neither party may assign this agreement without the other’s consent, except in connection with a merger, reorganization, or sale of substantially all relevant assets where the successor assumes the obligations. Neither party is responsible for delays caused by events beyond reasonable control, excluding payment obligations, and each must take reasonable steps to reduce their effects.</p>
+<p>These Terms and applicable Orders and signed agreements constitute the entire agreement concerning their subject matter. If a provision is unenforceable, the remainder remains effective. A failure to enforce a provision is not a waiver. The parties are independent contractors, and no third party receives enforcement rights under these Terms.</p>
+    </article>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="year">2026</span> RustyRMM. All rights reserved.</span>
+    <span><a href="/">Home</a> · <a href="/terms">Terms of Use</a> · <a href="/privacy">Privacy Policy</a> · <a href="mailto:legal@rustyrmm.com">legal@rustyrmm.com</a></span>
+  </div>
+</footer>
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  document.getElementById('theme').addEventListener('click', function () {
+    var next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+    document.documentElement.dataset.theme = next;
+    try { localStorage.setItem('rmm-site-theme', next); } catch (e) {}
+  });
+</script>
+</body>
+</html>
