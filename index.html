@@ -156,10 +156,9 @@
   .cta-band p { color: rgb(255 255 255 / .85); margin: 12px 0 0; }
   .cta-band .btn { background: #fff; color: #8a3413; justify-self: end; }
   @media (max-width: 760px) { .cta-band { grid-template-columns: 1fr; padding: 32px; } .cta-band .btn { justify-self: start; } }
-  .contacts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+  .contacts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
   .contacts a { text-decoration: none; color: var(--accent); font-weight: 600; }
-  @media (max-width: 1000px) { .contacts { grid-template-columns: repeat(2, 1fr); } }
-  @media (max-width: 620px) { .contacts { grid-template-columns: 1fr; } }
+  @media (max-width: 760px) { .contacts { grid-template-columns: 1fr; } }
 
   footer { border-top: 1px solid var(--border); padding: 40px 0; color: var(--muted); font-size: 14px; }
   footer .wrap { display: flex; flex-wrap: wrap; gap: 24px 48px; justify-content: space-between; }
@@ -435,7 +434,6 @@
       <div class="contacts">
         <div class="card"><h3>Sales</h3><p>Pricing, demos, hosting options and onboarding.</p><p style="margin-top:12px"><a href="mailto:sales@rustyrmm.com">sales@rustyrmm.com</a></p></div>
         <div class="card"><h3>Support</h3><p>Technical help and troubleshooting for customers.</p><p style="margin-top:12px"><a href="mailto:support@rustyrmm.com">support@rustyrmm.com</a></p></div>
-        <div class="card"><h3>Abuse</h3><p>Report spam, phishing or other misuse of RustyRMM services.</p><p style="margin-top:12px"><a href="mailto:abuse@rustyrmm.com">abuse@rustyrmm.com</a></p></div>
         <div class="card"><h3>Agent releases</h3><p>Signed agent builds and release notes for every version.</p><p style="margin-top:12px"><a href="https://github.com/RustyRmm/rustyrmm-releases/releases">View releases ↗</a></p></div>
       </div>
     </div>
